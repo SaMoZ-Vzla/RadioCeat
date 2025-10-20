@@ -1,72 +1,157 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // 1. GESTIÓN DEL FORMULARIO DE CONTACTO
-    const formContacto = document.querySelector('#contacto form');
+   // 1. GESTIÓN DEL FORMULARIO DE CONTACTO
+    const form = document.getElementById('contactForm');
     
-    if (formContacto) {
-        formContacto.addEventListener('submit', function(event) {
+    if (form) {
+        form.addEventListener('submit', function(event) {
             event.preventDefault(); 
             
             const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
+            const curso = document.getElementById('curso').value; // Capturamos el nuevo campo
             
-            // Muestra un mensaje de éxito
-            alert(`¡Gracias por contactarnos, ${nombre}! Tu mensaje ha sido recibido. Te responderemos pronto a ${email}.`);
+            let mensajeConfirmacion = `¡Mensaje enviado! Gracias, ${nombre}, por contactar a Radio CEAT.`;
             
-            // Limpia el formulario
-            formContacto.reset();
+            if (curso) {
+                mensajeConfirmacion += ` (Vimos que eres de ${curso})`;
+            }
+            
+            // Muestra el mensaje de éxito simulado
+            alert(mensajeConfirmacion);
+            
+            form.reset(); 
         });
     }
 
-    // 2. FUNCIONALIDAD DEL BOTÓN "ESCUCHAR EN VIVO"
-    const liveButton = document.querySelector('.live-button');
+    // 2. REPRODUCTOR DE PODCASTS (FUNCIONALIDAD SIMPLE)
+    const playButtons = document.querySelectorAll('.podcast-play-btn');
+    const audioPlayer = document.querySelector('.reproductor-vivo audio');
     
+    playButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const audioSrc = this.getAttribute('data-audio-src');
+            
+            if (audioSrc) {
+                // Cambia la fuente del reproductor principal
+                audioPlayer.src = audioSrc; 
+                audioPlayer.play();
+                
+                alert(`Reproduciendo: ${this.parentNode.querySelector('h3').textContent}`);
+            }
+        });
+    });
+
+    // 3. BOTÓN ESCUCHAR EN VIVO
+    const liveButton = document.querySelector('.live-button');
     if (liveButton) {
         liveButton.addEventListener('click', function() {
-            console.log('Botón Escuchar en vivo presionado. Iniciando reproducción...');
-            
-            const reproductor = document.querySelector('.reproductor audio');
-            if (reproductor) {
-                reproductor.play().catch(error => {
-                    console.error('La reproducción automática falló:', error);
-                    alert('Por favor, presiona el botón Play en el reproductor si no inicia automáticamente.');
-                });
-            }
+            // Desplaza la vista a la sección de inicio donde está el reproductor
+            document.getElementById('inicio').scrollIntoView({ behavior: 'smooth' });
         });
     }
-    
-    // 3. FUNCIONALIDAD DEL CARRUSEL (GALERÍA)
-    const slides = document.querySelectorAll('.carousel-slide img');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    let currentSlideIndex = 0; 
-    
-    if (slides.length > 0) {
-        function showSlide(index) {
-            slides.forEach(slide => {
-                slide.classList.remove('active-slide');
+
+    // 4. LÓGICA DEL CARRUSEL
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+    const nextButton = document.querySelector('.carousel-button.next');
+    const prevButton = document.querySelector('.carousel-button.prev');
+    const indicators = Array.from(document.querySelectorAll('.carousel-indicator'));
+
+    if (track && slides.length > 0) {
+        // Calcula el ancho de una sola slide
+        const slideWidth = slides[0].getBoundingClientRect().width;
+
+        // Función para mover el carrusel
+        const moveToSlide = (currentSlide, targetSlide) => {
+            // Calcula la posición de desplazamiento
+            const targetIndex = slides.indexOf(targetSlide);
+            track.style.transform = 'translateX(-' + (targetIndex * slideWidth) + 'px)';
+            
+            // Actualizar la clase "current-slide"
+            currentSlide.classList.remove('current-slide');
+            targetSlide.classList.add('current-slide');
+            
+            // Actualizar la clase "current-indicator"
+            const currentIndicator = document.querySelector('.current-indicator');
+            currentIndicator.classList.remove('current-indicator');
+            indicators[targetIndex].classList.add('current-indicator');
+        };
+
+        // Función para posicionar cada slide horizontalmente
+        const setSlidePosition = (slide, index) => {
+            slide.style.left = slideWidth * index + 'px';
+        };
+
+        // 1. Inicializar: Distribuir las slides
+        slides.forEach(setSlidePosition);
+
+        // 2. Evento del botón SIGUIENTE
+        nextButton.addEventListener('click', e => {
+            const currentSlide = document.querySelector('.current-slide');
+            const currentIndex = slides.indexOf(currentSlide);
+            const targetIndex = (currentIndex + 1) % slides.length; // Ciclo
+            const nextSlide = slides[targetIndex];
+            
+            moveToSlide(currentSlide, nextSlide);
+        });
+
+        // 3. Evento del botón ANTERIOR
+        prevButton.addEventListener('click', e => {
+            const currentSlide = document.querySelector('.current-slide');
+            const currentIndex = slides.indexOf(currentSlide);
+            // Ciclo inverso: (currentIndex - 1 + length) % length
+            const targetIndex = (currentIndex - 1 + slides.length) % slides.length; 
+            const prevSlide = slides[targetIndex];
+            
+            moveToSlide(currentSlide, prevSlide);
+        });
+
+        // 4. Evento de los INDICADORES (puntos)
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', e => {
+                const targetSlide = slides[index];
+                const currentSlide = document.querySelector('.current-slide');
+                moveToSlide(currentSlide, targetSlide);
             });
-            
-            if (index >= slides.length) {
-                currentSlideIndex = 0; 
-            } else if (index < 0) {
-                currentSlideIndex = slides.length - 1; 
-            } else {
-                currentSlideIndex = index;
-            }
-            
-            slides[currentSlideIndex].classList.add('active-slide');
-        }
-
-        nextBtn.addEventListener('click', () => {
-            showSlide(currentSlideIndex + 1);
         });
-
-        prevBtn.addEventListener('click', () => {
-            showSlide(currentSlideIndex - 1);
+        
+        // 5. Autoplay (Desliza automáticamente cada 5 segundos)
+        setInterval(() => {
+            nextButton.click();
+        }, 5000);
+        
+        // 6. Ajustar al redimensionar (para que el carrusel no se rompa)
+        window.addEventListener('resize', () => {
+            const newSlideWidth = slides[0].getBoundingClientRect().width;
+            slides.forEach((slide, index) => {
+                slide.style.left = newSlideWidth * index + 'px';
+            });
+            // Vuelve a posicionar el carrusel en la diapositiva actual
+            const currentSlide = document.querySelector('.current-slide');
+            const currentIndex = slides.indexOf(currentSlide);
+            track.style.transform = 'translateX(-' + (currentIndex * newSlideWidth) + 'px)';
         });
-
-        // Muestra la primera imagen al cargar
-        showSlide(currentSlideIndex); 
     }
+    
+    // 5. LÓGICA DEL BOTÓN ME GUSTA (LIKE)
+    const likeButtons = document.querySelectorAll('.like-button');
+    
+    likeButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.stopPropagation(); // Evita que el clic afecte a otros elementos
+            
+            const isLiked = this.getAttribute('data-liked') === 'true';
+            const songTitle = this.parentNode.querySelector('.song-title').textContent;
+            
+            if (isLiked) {
+                // Si ya tiene "Me Gusta", lo quita
+                this.setAttribute('data-liked', 'false');
+                alert(`💔 Se eliminó el Me Gusta de: ${songTitle}`);
+            } else {
+                // Si no tiene "Me Gusta", lo activa
+                this.setAttribute('data-liked', 'true');
+                alert(`❤️ ¡Me Gusta registrado para: ${songTitle}!`);
+            }
+        });
+    });
 });

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Radio CEAT Dashboard</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <link rel="stylesheet" href="admin-styles.css"> 
+</head>
+<body>
+    
+    <div id="admin-container">
+        
+        <aside id="admin-sidebar">
+            <div class="logo-admin">
+                <h3>ADMIN RADIO CEAT</h3>
+            </div>
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="#dashboard" class="active">📊 Resumen</a></li>
+                    <li><a href="#noticias">📰 Noticias</a></li>
+                    <li><a href="#programacion">🗓️ Programación</a></li>
+                    <li><a href="#galeria">🖼️ Galería/Carrusel</a></li>
+                    <li><a href="#ajustes">⚙️ Ajustes Generales</a></li>
+                    <li><a href="index.html">🚪 Volver al Sitio</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main id="admin-main-content">
+            
+            <header class="admin-header">
+                <h2>Panel de Control</h2>
+                <div class="user-info">
+                    <span>Bienvenido, Admin</span>
+                    <button>Cerrar Sesión</button>
+                </div>
+            </header>
+
+            <section id="dashboard" class="admin-section active-content">
+                <h3>Resumen Rápido</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Canciones Votadas</h4>
+                        <p>125 Me Gusta ❤️</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Noticias Publicadas</h4>
+                        <p>8 Artículos</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Próximo Programa</h4>
+                        <p>Noticiero CEAT (Lunes 14:00)</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="noticias" class="admin-section">
+                <h3>Gestión de Noticias</h3>
+                <button class="add-button">➕ Agregar Nueva Noticia</button>
+                
+                <div class="content-list">
+                    <div class="list-item">
+                        <span class="item-title">¡Vuelve el Noticiero CEAT!</span>
+                        <span class="item-date">Publicado: 01/10/2025</span>
+                        <div class="item-actions">
+                            <button class="edit-btn">✏️ Editar</button>
+                            <button class="delete-btn">🗑️ Eliminar</button>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <span class="item-title">Inauguración Taller de Robótica</span>
+                        <span class="item-date">Publicado: 25/09/2025</span>
+                        <div class="item-actions">
+                            <button class="edit-btn">✏️ Editar</button>
+                            <button class="delete-btn">🗑️ Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="programacion" class="admin-section">
+                <h3>Gestión de Programación Semanal</h3>
+                <button class="add-button">➕ Agregar Nuevo Programa</button>
+                
+                <div class="content-list">
+                    <div class="list-item">
+                        <span class="item-title">Noticiero CEAT - Lunes 14:00</span>
+                        <span class="item-date">Conductor: Equipo de Prensa</span>
+                        <div class="item-actions">
+                            <button class="edit-btn">✏️ Editar</button>
+                            <button class="delete-btn">🗑️ Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="galeria" class="admin-section">
+                <h3>Gestión de Galería (Carrusel)</h3>
+                <button class="add-button">➕ Subir Nueva Imagen</button>
+            </section>
+
+        </main>
+        
+    </div>
+    
+    <script src="admin-script.js"></script>
+</body>
+</html>

@@ -3,147 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio CEAT - Autonomía Responsable</title>
+    <title>Radio CEAT | La Voz del Liceo</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="fix.css"> 
 </head>
 <body>
     
-    <header>
-        <div class="logo">
-            <img src="logo-radio-ceat.png" alt="Logo de Radio CEAT"> 
+    <div id="sidebar-nav">
+        <div class="logo-sidebar">
+            <img src="assets/img/logo-radio-ceat.png" alt="Logo de Radio CEAT"> 
         </div>
         
         <nav>
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#programacion">Programación</a></li>
-                <li><a href="#noticias">Noticias</a></li>
-                <li><a href="#podcasts">Podcasts</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#inicio">🏠 Inicio</a></li>
+                <li><a href="#galeria">🖼️ Galería</a></li>
+                <li><a href="#programacion">🗓️ Programación</a></li>
+                <li><a href="#noticias">📰 Noticias</a></li>
+                <li><a href="#podcasts">🎧 Podcasts</a></li>
+                <li><a href="#contacto">📧 Contacto</a></li>
+
+                <li><a href="admin.html" style="font-size: 0.9em; opacity: 0.7;">🔒 Admin Panel</a></li> 
             </ul>
         </nav>
         
-        <button class="live-button">Escuchar en vivo</button>
-    </header>
+        <button class="live-button">Escuchar en vivo 🎧</button>
+    </div>
 
-    <main>
-        <section id="inicio" class="hero-banner">
-            <h1>Radio CEAT</h1>
-            <h2>"Autonomía Responsable"</h2>
-            
-            <div class="reproductor">
-                <audio controls>
-                    <source src="radio-stream-url" type="audio/mpeg">
-                    Tu navegador no soporta el reproductor de audio.
-                </audio>
-            </div>
-
-            <div class="social-links">
-                <a href="#" target="_blank">Instagram</a>
-                <a href="#" target="_blank">TikTok</a>
-                <a href="#" target="_blank">Spotify</a>
-            </div>
-        </section>
+    <div id="main-content">
         
-        <section id="programacion">
-            <h2>Nuestra Programación</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Día</th>
-                        <th>Hora</th>
-                        <th>Programa</th>
-                        <th>Conductor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Lunes</td>
-                        <td>10:00 - 11:00</td>
-                        <td>El Despertar CEAT</td>
-                        <td>Juan Pérez</td>
-                    </tr>
-                    </tbody>
-            </table>
+        <main>
+            <section id="inicio" class="hero-banner">
+                <h1>Radio CEAT: Autonomía Responsable</h1>
+                <p>Sintoniza la frecuencia escolar con la mejor música y noticias de tu liceo.</p>
+                
+                <div class="live-player-container">
+                    
+<div class="live-player-column">
+    <h2>En Vivo Ahora</h2>
+    <div class="reproductor-vivo">
+        <audio controls src="https://sonic-us.arkeo.cl/8516/stream"></audio> </div>
+    
+    <div class="social-player-icons-bar">
+        <span class="label">Síguenos en:</span>
+        <div class="social-icons-player">
+            <a href="https://www.instagram.com/ceat_liceomh/" target="_blank" class="icon-link-player"><img src="assets/img/Ig-removebg-preview.png" alt="Instagram"></a>
+            <a href="https://web.facebook.com/CorporacionCEAT/?_rdc=1&_rdr#" target="_blank" class="icon-link-player"><img src="assets/img/Facebook-removebg-preview.png" alt="Facebook"></a>
+            <a href="https://www.youtube.com/@CorporacionCEAT/videos" target="_blank" class="icon-link-player"><img src="assets/img/YT-removebg-preview.png" alt="YouTube"></a>
+            <a href="https://x.com/CorporacionCEAT" target="_blank" class="icon-link-player"><img src="assets/img/X-removebg-preview.png" alt="X"></a>
+        </div>
+    </div>
+    </div>
+                    
+                    <div class="playlist-column">
+                        <h3>Próximas Canciones</h3>
+                        <ul class="upcoming-songs-list">
+                            <li class="song-item">
+                                <span class="song-index">1</span>
+                                <div class="song-info">
+                                    <span class="song-title">NUEVAYOL</span>
+                                    <span class="song-artist">Bad Bunny</span>
+                                </div>
+                                <button class="like-button" data-liked="false">❤️</button>
+                                <span class="song-duration">3:03</span>
+                            </li>
+                            <li class="song-item">
+                                <span class="song-index">2</span>
+                                <div class="song-info">
+                                    <span class="song-title">VOY A LLEVARTE PA PR</span>
+                                    <span class="song-artist">Bad Bunny</span>
+                                </div>
+                                <button class="like-button" data-liked="false">❤️</button>
+                                <span class="song-duration">2:36</span>
+                            </li>
+                            <li class="song-item">
+                                <span class="song-index">3</span>
+                                <div class="song-info">
+                                    <span class="song-title">BAILE INOLVIDABLE</span>
+                                    <span class="song-artist">Bad Bunny</span>
+                                </div>
+                                <button class="like-button" data-liked="false">❤️</button>
+                                <span class="song-duration">6:07</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
             
-            <h3>Programas Destacados</h3>
+            <section id="galeria">
+                <h2>Galería de Fotos CEAT</h2>
+                <div class="carousel-container">
+                    
+                    <div class="carousel-track">
+                        <img class="carousel-slide current-slide" src="assets/img/Foto1.jpg" alt="Foto del liceo 1">
+                        <img class="carousel-slide" src="assets/img/Foto3.jpg" alt="Foto del liceo 2">
+                        <img class="carousel-slide" src="assets/img/Foto2.jpg" alt="Foto del liceo 3">
+                        <img class="carousel-slide" src="assets/img/Foto4.jpg" alt="Foto del liceo 4">
+                    </div>
+
+                    <button class="carousel-button prev">❮</button>
+                    <button class="carousel-button next">❯</button>
+
+                    <div class="carousel-nav">
+                        <button class="carousel-indicator current-indicator"></button>
+                        <button class="carousel-indicator"></button>
+                        <button class="carousel-indicator"></button>
+                        <button class="carousel-indicator"></button>
+                    </div>
+
+                </div>
             </section>
 
-        <section id="noticias">
-            <h2>Noticias y Actividades</h2>
-            <div class="articulos-grid">
-                <article>
-                    <img src="noticia1.jpg" alt="Imagen de la noticia">
-                    <h3>Título de la Noticia</h3>
-                    <p>Resumen corto de la noticia...</p>
-                    <a href="enlace-a-nota-completa">Leer más</a>
-                </article>
+<section id="programacion">
+    <h2>Nuestra Programación Semanal</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Día</th>
+                <th>Hora</th>
+                <th>Programa</th>
+                <th>Conductor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Día">Lunes</td> 
+                <td data-label="Hora">14:00</td>
+                <td data-label="Programa">Noticiero CEAT</td>
+                <td data-label="Conductor">Equipo de Prensa</td>
+            </tr>
+            <tr>
+                <td data-label="Día">Miércoles</td>
+                <td data-label="Hora">16:30</td>
+                <td data-label="Programa">Especialidad en el Aire</td>
+                <td data-label="Conductor">Alumnos de 3er año</td>
+            </tr>
+            </tbody>
+    </table>
+</section>
+
+            <section id="noticias">
+                <h2>Últimas Noticias</h2>
+                <div class="noticias-grid">
+                    
+                    <article class="noticia-card">
+                        <img src="assets/img/noticia-ejemplo.jpg" alt="Foto de la noticia">
+                        <div class="card-content">
+                            <h3>🎙️ ¡Vuelve el Noticiero CEAT!</h3>
+                            <p>El equipo de prensa de la radio da inicio a la temporada 2025, cubriendo eventos y entrevistas a la comunidad escolar.</p>
+                            <a href="#" class="read-more">Leer nota completa</a>
+                        </div>
+                    </article>
+                    
+                    <article class="noticia-card">
+                        <img src="assets/img/noticia-ejemplo-2.jpg" alt="Foto de la noticia">
+                        <div class="card-content">
+                            <h3>⚙️ Inauguración Taller de Robótica</h3>
+                            <p>La semana pasada se llevó a cabo el corte de cinta del nuevo laboratorio. Revisa la cobertura de la Radio CEAT.</p>
+                            <a href="#" class="read-more">Leer nota completa</a>
+                        </div>
+                    </article>
+
+                    <article class="noticia-card">
+                        <img src="assets/img/noticia-ejemplo-3.jpg" alt="Foto de la noticia">
+                        <div class="card-content">
+                            <h3>🏆 ¡CEAT Gana Concurso de Ideas!</h3>
+                            <p>El equipo de 4to medio A obtuvo el primer lugar en la feria tecnológica regional con su proyecto de energía solar.</p>
+                            <a href="#" class="read-more">Leer nota completa</a>
+                        </div>
+                    </article>
+                    
                 </div>
-        </section>
-        
-        <section id="podcasts">
-            <h2>Nuestros Podcasts</h2>
-            <ul class="episodios-lista">
-                <li>
-                    <span>Episodio 1: Título del Podcast</span>
-                    <button>Reproducir</button>
-                    <a href="#">Spotify</a>
-                </li>
-                </ul>
-        </section>
-
-        <section id="galeria">
-            <h2>Galería de Fotos y Videos</h2>
+            </section>
             
-            <div class="carousel-container">
-                <div class="carousel-slide">
-                    <img src="img/galeria1.jpg" alt="Detrás de cámaras del estudio" class="active-slide">
-                    <img src="img/galeria2.jpg" alt="Evento escolar de la radio">
-                    <img src="img/galeria3.jpg" alt="Concurso de talentos CEAT">
+            <section id="podcasts">
+                <h2>Episodios Destacados</h2>
+                <div class="podcast-list">
+                    
+                    <div class="podcast-item">
+                        <span class="episode-number">E01</span>
+                        <div class="episode-info">
+                            <h3>Desafíos del Telecomunicador</h3>
+                            <p>Invitados especiales de la especialidad nos cuentan sobre el futuro laboral y los retos de la tecnología.</p>
+                            <a href="#" target="_blank">Escuchar en Spotify</a>
+                        </div>
+                        <button class="podcast-play-btn" data-audio-src="assets/audio/ep1.mp3">
+                            ▶️ Reproducir
+                        </button>
+                    </div>
+                    
+                    <div class="podcast-item">
+                        <span class="episode-number">E02</span>
+                        <div class="episode-info">
+                            <h3>El Legado del CEAT</h3>
+                            <p>Una conversación con exalumnos que han dejado huella, recordando las anécdotas del liceo.</p>
+                            <a href="#" target="_blank">Escuchar en Spotify</a>
+                        </div>
+                        <button class="podcast-play-btn" data-audio-src="assets/audio/ep2.mp3">
+                            ▶️ Reproducir
+                        </button>
+                    </div>
+                    
+                    <div class="podcast-item">
+                        <span class="episode-number">E03</span>
+                        <div class="episode-info">
+                            <h3>Viviendo la Autonomía</h3>
+                            <p>Hablamos con el centro de alumnos sobre la importancia de la autonomía y la responsabilidad en la vida escolar.</p>
+                            <a href="#" target="_blank">Escuchar en Spotify</a>
+                        </div>
+                        <button class="podcast-play-btn" data-audio-src="assets/audio/ep3.mp3">
+                            ▶️ Reproducir
+                        </button>
+                    </div>
+
                 </div>
-                
-                <button id="prevBtn" class="carousel-btn prev">❮</button>
-                <button id="nextBtn" class="carousel-btn next">❯</button>
-            </div>
-        </section>
+            </section>
+
+<section id="contacto">
+    <h2>¿Quieres enviarnos un mensaje o un saludo?</h2> 
+    <form id="contactForm">
+        <label for="nombre">Tu Nombre:</label>
+        <input type="text" id="nombre" required>
         
-        <section id="contacto">
-            <h2>Contáctanos</h2>
-            <form action="#" method="POST">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-                
-                <button type="submit">Enviar Mensaje</button>
-            </form>
-            
-            <p>Correo institucional: <a href="mailto:contacto@radioceat.cl">contacto@radioceat.cl</a></p>
-            <div class="mapa">Mapa del colegio (Google Maps Embed)</div>
-        </section>
+        <label for="email">Tu Email:</label>
+        <input type="email" id="email" required>
+        
+        <label for="curso">Curso o Especialidad (Opcional):</label>
+        <input type="text" id="curso">
+        
+        <label for="mensaje">¡Déjanos tu mensaje!</label>
+        <textarea id="mensaje" rows="5" required></textarea>
+        
+        <button type="submit">Enviar Mensaje</button>
+    </form>
+    <p class="institucional">Correo: contacto@radioceat.cl | Teléfono: 555-555</p>
+</section>
 
-    </main>
+        </main>
 
-    <footer>
-        <div class="footer-contenido">
-            <p>&copy; 2025 Radio CEAT – Todos los derechos reservados.</p>
-            <p>Créditos: Desarrollado por el Equipo Web CEAT.</p>
-            <div class="social-icons">
-                <a href="#">Insta</a>
-                <a href="#">TikTok</a>
-            </div>
-        </div>
-    </footer>
-    
-    <script src="script.js"></script>
+        <footer>
+            <p>&copy; 2025 Radio CEAT | Hecho con tecnología y pasión.</p>
+        </footer>
+        
+    </div> <script src="script.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,12 @@
+/* fix.css */
+
+.social-icons-player img {
+    /* Define el tamaño deseado, por ejemplo, 35px */
+    width: 35px;
+    height: 35px;
+}
+
+/* Opcional: Para darle espacio entre los logos si lo necesitas */
+.icon-link-player {
+    margin: 0 8px; /* Espacio horizontal */
+}
